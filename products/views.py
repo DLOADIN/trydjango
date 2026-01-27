@@ -11,4 +11,10 @@ def Contactview(request,*args, **kwargs):
 
 def Aboutview(request,*args, **kwargs):
     print(args, kwargs)
-    return render(request, "AboutPage.html",{})
+    my_context = {
+        "my_name": "DTX Team",
+        "my_age": "24",
+        "my_hobby": "Coding",
+        "my_fav_food": "Biriyani"
+    }
+    return render(request, "AboutPage.html", my_context)
