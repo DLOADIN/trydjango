@@ -1,6 +1,14 @@
 from django.db import models
 
 # Create your models here.
+# we can have TextField for large text inputs, 
+# DecimalField for precise decimal numbers like prices
+# CharField for short text inputs
+# IntegerField for whole numbers
+# BooleanField for true/false values
+# DateTimeField for date and time values
+# ForeignKey for relationships between models
+# ManyToManyField for many-to-many relationships
 class Products(models.Model):
     title = models.TextField()
     description = models.TextField()
