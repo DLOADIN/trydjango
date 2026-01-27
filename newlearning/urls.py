@@ -20,5 +20,6 @@ from products import views
 
 urlpatterns = [
     path('products/', views.product_detail_view),
+    path('Contact/', views.Contactview),
     path('admin/', admin.site.urls),
 ]
