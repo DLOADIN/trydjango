@@ -23,10 +23,10 @@ def Aboutview(request,*args, **kwargs):
 
 
 def new_product_detail_view(request):
-    obj = Products.objects.get(id=1)
+    Newobject = Products.objects.get(id=1)
     context = {
-        "title": obj.title,
-        'summary': obj.summary
+        "title": Newobject.title,
+        'summary': Newobject.summary
     }
-    return render(request, "./",context)
+    return render(request, "products/new_product_detail.html",context)
 
