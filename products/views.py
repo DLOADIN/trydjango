@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Products
 from .forms import ProductForm, RawProductForm
@@ -61,3 +61,22 @@ def product_create_rawform(request):
         "form": my_form
     }
     return render(request, "products/product_create.html", context)
+
+def render_initial_data(request):
+    # Retrieve the existing product instance
+    product = get_object_or_404(Products, id=1)
+    # Initialize the form with POST data or prefill with the product instance
+    form = ProductForm(request.POST or None, instance=product)
+
+    # Save the form if it's valid
+    if form.is_valid():
+        form.save()
+
+    # Render the form in the template
+    return render(request, "products/product_create.html", {"form": form})
+
+def dynamic_lookup_view(request, id):
+    # Safely retrieve the product by ID or return a 404 error if not found
+    product = get_object_or_404(Product, id=id)
+    return render(request, "products/product_detail.html", {"object": product})
+
