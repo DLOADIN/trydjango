@@ -8,6 +8,11 @@
 <body>
     {% include 'index.html' %}
     <!-- This include is used to import content from index.html file as a component to avoid redundancy. -->
+    
+    {% block content %}
+    <!-- Default content goes here, child templates will override this -->
+    {% endblock %}
+    
     <form action="" method="post">
         <label for="">Names</label>
         <input type="text" name="names" id="">
