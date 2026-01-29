@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Products
 
 # Create your views here.
 def product_detail_view(request,*args, **kwargs):
@@ -15,6 +16,17 @@ def Aboutview(request,*args, **kwargs):
         "my_name": "DTX Team",
         "my_age": "24",
         "my_hobby": "Coding",
-        "my_fav_food": "Biriyani"
+        "my_fav_food": "Biriyani",
+        "my_list": [425, 'Galvarino', 3123, 3484, 25, 'DTX' , 312],
     }
     return render(request, "AboutPage.html", my_context)
+
+
+def new_product_detail_view(request):
+    obj = Products.objects.get(id=1)
+    context = {
+        "title": obj.title,
+        'summary': obj.summary
+    }
+    return render(request, "./",context)
+

@@ -22,5 +22,6 @@ urlpatterns = [
     path('products/', views.product_detail_view),
     path('About/', views.Aboutview),
     path('Contact/', views.Contactview),
+    path('New Products', new_product_detail_view),
     path('admin/', admin.site.urls),
 ]
