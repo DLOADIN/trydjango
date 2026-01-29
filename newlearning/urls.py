@@ -19,6 +19,7 @@ from django.urls import path
 from products.views import product_detail_view, Aboutview, Contactview   
 from products.views import new_product_detail_view 
 from products.views import product_create_newproduct, product_create_rawform                                              
+from products.views import dynamic_lookup_view
 
 urlpatterns = [
     path('products/', product_detail_view),
@@ -28,4 +29,8 @@ urlpatterns = [
     path('New Form Page/', product_create_newproduct),
     path('Raw Form Page/', product_create_rawform),
     path('admin/', admin.site.urls),
+]
+
+urlpatterns = [
+    path("products/<int:my_id>/", dynamic_lookup_view, name="product"),
 ]

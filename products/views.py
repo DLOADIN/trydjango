@@ -75,8 +75,8 @@ def render_initial_data(request):
     # Render the form in the template
     return render(request, "products/product_create.html", {"form": form})
 
-def dynamic_lookup_view(request, id):
+def dynamic_lookup_view(request, my_id):
     # Safely retrieve the product by ID or return a 404 error if not found
-    product = get_object_or_404(Product, id=id)
+    product = get_object_or_404(Products, id=my_id)
     return render(request, "products/product_detail.html", {"object": product})
 
