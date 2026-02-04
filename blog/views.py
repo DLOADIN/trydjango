@@ -8,11 +8,15 @@ from django.views.generic import (
     )
 
 from .models import Articles
+from .forms import ArticleForm
 
+class ArticleCreateView(CreateView):
+    template_name = "articles/article_create.html"
+    form_class = ArticleForm
+    queryset = Articles.objects.all() # pylint: disable=no-member
 class ArticleListView(ListView):
     template_name = "articles/article_list.html"
     queryset = Articles.objects.all()  # pylint: disable=no-member
-
 
 class ArticleDetailView(DetailView):
     template_name = "articles/article_detail.html"
