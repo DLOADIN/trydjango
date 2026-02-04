@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 # we can have TextField for large text inputs, 
@@ -15,3 +16,7 @@ class Products(models.Model):
     price = models.DecimalField(max_digits=100000, decimal_places=2) 
     summary = models.TextField()
     objects = models.Manager()
+
+    def get_absolute_url(self):
+        return f"/products/{self.pk}/"
+    
