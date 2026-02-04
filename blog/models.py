@@ -4,5 +4,6 @@ from django.db import models
 
 
 class Articles(models.Model):
-    title = models.TextField()
+    active = models.BooleanField(default=True)
+    title = models.CharField(max_length=200)
     content = models.TextField()

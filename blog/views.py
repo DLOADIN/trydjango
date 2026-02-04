@@ -11,9 +11,13 @@ from .models import Articles
 
 class ArticleListView(ListView):
     template_name = "articles/article_list.html"
-    queryset = Articles.objects.all()
+    queryset = Articles.objects.all()  # pylint: disable=no-member
 
 
 class ArticleDetailView(DetailView):
     template_name = "articles/article_detail.html"
-    queryset = Articles.objects.all()
+    queryset = Articles.objects.all()  # pylint: disable=no-member
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Articles, id=id_)
